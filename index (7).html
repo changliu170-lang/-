@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>刘畅 · Visual Designer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== Design System ===== */
+    :root {
+      --black: #1a1a1a;
+      --white: #ffffff;
+      --red: #FF4338;
+      --bg: #E3E0D6;
+      --sans: "Inter", "Noto Sans SC", sans-serif;
+      --heading: "MiSans", "Noto Sans SC", "Inter", sans-serif;
+      --max-width: 1280px;
+      --space4: 80px;
+      --space5: 120px;
+      --project-gap: 140px;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background: var(--bg);
+      color: var(--black);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+    img,
+    video {
+      width: 100%;
+      display: block;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ===== Navigation ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 99;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+      font-family: var(--sans);
+      background: rgba(227, 224, 214, 0.78);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .nav-logo {
+      font-size: 18px;
+      letter-spacing: .08em;
+      font-weight: 600;
+      color: var(--black);
+    }
+    .nav-menu {
+      display: flex;
+      gap: 40px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #2b2b28;
+    }
+    .nav-menu a:hover {
+      color: var(--red);
+    }
+    .nav-btn {
+      padding: 10px 20px;
+      border: 1px solid var(--black);
+      font-size: 12px;
+      transition: .3s;
+      border-radius: 2px;
+    }
+    .nav-btn:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* ===== Layout ===== */
+    .container {
+      width: min(var(--max-width), calc(100% - 96px));
+      margin: auto;
+    }
+    section {
+      padding: var(--space5) 0;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero .container {
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 48px;
+      width: auto;
+      max-width: 70%;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-meta {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--red);
+      margin-bottom: 40px;
+      letter-spacing: .12em;
+    }
+    .hero-title {
+      font-family: var(--heading);
+      font-weight: 600;
+      font-size: clamp(120px, 22vw, 420px);
+      line-height: .78;
+      letter-spacing: -.06em;
+      color: var(--black);
+    }
+    .hero-title span {
+      display: block;
+    }
+    .hero-title .accent {
+      color: var(--red);
+    }
+    .hero-desc {
+      margin-top: 50px;
+      max-width: 500px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--red);
+      font-weight: 400;
+    }
+    .hero-image {
+      position: absolute;
+      right: 6%;
+      bottom: 12%;
+      width: 380px;
+      height: 480px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.12);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+      z-index: 1;
+    }
+    .hero-image img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.06));
+    }
+    .scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 48px;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--red);
+      animation: float 2s infinite;
+      z-index: 2;
+    }
+    @keyframes float {
+      50% { transform: translateY(8px); }
+    }
+
+    /* ============================================================
+       About 部分
+       ============================================================ */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+    .about-left {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .about-left .label {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--red);
+      letter-spacing: .15em;
+      margin-bottom: 0;
+    }
+    .about-left h2 {
+      font-family: var(--heading);
+      font-weight: 600;
+      font-size: 56px;
+      line-height: 1.1;
+      color: var(--black);
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .about-image {
+      margin-top: 10px;
+      width: 100%;
+      max-width: 420px;
+    }
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      justify-content: center;
+    }
+    .about-right p {
+      font-size: 18px;
+      line-height: 2;
+      color: #3e3d39;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+    .info-card {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-top: 10px;
+    }
+    .info-card .info-item {
+      display: flex;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .info-card .info-item:last-child {
+      border-bottom: none;
+    }
+    .info-card .info-label {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--red);
+      min-width: 56px;
+      letter-spacing: .04em;
+    }
+    .info-card .info-value {
+      font-size: 15px;
+      color: var(--black);
+      font-weight: 400;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-content: start;
+      margin-top: 6px;
+    }
+    .tag {
+      border: 1px solid rgba(0,0,0,0.25);
+      padding: 10px 20px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      transition: .3s;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.4);
+    }
+    .tag:hover {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+
+    /* ===== Scroll Reveal ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: .8s cubic-bezier(.2,.8,.2,1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ===== Works ===== */
+    .works-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 80px;
+    }
+    .works-header h2 {
+      font-family: var(--heading);
+      font-weight: 600;
+      font-size: 90px;
+      line-height: .9;
+      letter-spacing: -.06em;
+      color: var(--black);
+    }
+    .work-count {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      color: #6b6a66;
+    }
+
+    .project {
+      border-top: 1px solid rgba(0,0,0,0.10);
+      padding: var(--project-gap) 0;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 60px;
+    }
+    .project:last-of-type {
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .project-number {
+      font-family: var(--sans);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--red);
+    }
+    .project-main {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 70px;
+    }
+
+    /* ============================================================
+       项目图片容器 — 前面三个项目保持原样 (overflow: visible)
+       ============================================================ */
+    .project-image {
+      position: relative;
+      border-radius: 0;
+      overflow: visible;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: auto;
+      min-height: 460px;
+    }
+
+    /* ============================================================
+       项目四 — 视频容器 (单独设置 overflow: hidden + 深色背景)
+       ============================================================ */
+    .project-image.video-container {
+      overflow: hidden;
+      background: #1a1a1a;
+      min-height: 460px;
+    }
+    .project-image.video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* ============================================================
+       卡片堆叠轮播 (项目一、二、三)
+       ============================================================ */
+    .stack-carousel {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 440px;
+    }
+    .stack-card {
+      position: absolute;
+      width: 92%;
+      height: auto;
+      border-radius: 0;
+      overflow: hidden;
+      background: transparent;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                  opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                  box-shadow 0.4s ease;
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .stack-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      border-radius: 0;
+    }
+    .stack-card.active {
+      opacity: 1;
+      transform: translateX(0) translateY(0) scale(1) rotate(0deg);
+      z-index: 10;
+      box-shadow: 0 16px 56px rgba(0, 0, 0, 0.20);
+      cursor: default;
+    }
+    .stack-card.middle {
+      opacity: 0.7;
+      transform: translateX(14px) translateY(18px) scale(0.92) rotate(2deg);
+      z-index: 5;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.10);
+      pointer-events: none;
+    }
+    .stack-card.bottom {
+      opacity: 0.45;
+      transform: translateX(28px) translateY(34px) scale(0.84) rotate(4deg);
+      z-index: 1;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      pointer-events: none;
+    }
+    .stack-card.deep {
+      opacity: 0.25;
+      transform: translateX(40px) translateY(50px) scale(0.76) rotate(6deg);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .stack-indicators {
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 20;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 5px 14px;
+      border-radius: 30px;
+      backdrop-filter: blur(4px);
+    }
+    .stack-indicators span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .stack-indicators span.active {
+      background: var(--red);
+      width: 22px;
+      border-radius: 4px;
+    }
+    .stack-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .stack-btn:hover {
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .stack-btn.prev {
+      left: 8px;
+    }
+    .stack-btn.next {
+      right: 8px;
+    }
+
+    /* ============================================================
+       横向滚动预览
+       ============================================================ */
+    .preview {
+      overflow: hidden;
+      background: rgba(0,0,0,0.02);
+      padding: var(--space4) 0;
+    }
+    .preview-title {
+      font-family: var(--heading);
+      font-weight: 600;
+      font-size: 80px;
+      letter-spacing: -.06em;
+      margin-bottom: 60px;
+      color: var(--black);
+    }
+    .slider {
+      display: flex;
+      gap: 30px;
+      width: max-content;
+      animation: slide 35s linear infinite;
+    }
+    .slider:hover {
+      animation-play-state: paused;
+    }
+    .card {
+      width: 420px;
+    }
+    .card-image {
+      height: 300px;
+      background: transparent;
+      overflow: hidden;
+      border: none;
+      border-radius: 0;
+    }
+    .card-image img,
+    .card-image video {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: .6s;
+      border-radius: 0;
+    }
+    .card:hover .card-image img,
+    .card:hover .card-image video {
+      transform: scale(1.06);
+    }
+    .card-title {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--heading);
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--black);
+    }
+    .card-title span {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    @keyframes slide {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ===== Sense ===== */
+    .sense {
+      background: #d6d2c6;
+      padding: var(--space5) 0;
+    }
+    .sense-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+    }
+    .sense h2 {
+      font-family: var(--heading);
+      font-weight: 600;
+      font-size: 70px;
+      line-height: 1;
+      color: var(--black);
+    }
+    .sense p {
+      color: #3e3d39;
+      line-height: 2;
+      font-size: 18px;
+      font-weight: 400;
+    }
+    /* 新增格言样式 */
+    .sense-quote {
+      margin-top: 28px;
+      font-family: var(--heading);
+      font-size: 20px;
+      line-height: 1.8;
+      color: var(--black);
+      border-left: 3px solid var(--red);
+      padding-left: 24px;
+      letter-spacing: .02em;
+    }
+    .sense-quote span {
+      display: block;
+    }
+    .sense-quote .highlight {
+      color: var(--red);
+    }
+
+    /* ---------- A4 比例图片容器 ---------- */
+    .sense-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 30px;
+    }
+    .sense-box {
+      aspect-ratio: 1 / 1.414; /* A4 比例：宽高比 1:1.414 */
+      width: 100%;
+      border: 1px solid rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--sans);
+      font-weight: 400;
+      color: #5a5955;
+      background: rgba(255,255,255,0.3);
+      border-radius: 0;
+      overflow: hidden;
+    }
+    .sense-box img,
+    .sense-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ===== Contact ===== */
+    .contact {
+      padding: 160px 0;
+      background: var(--bg);
+    }
+    .contact h2 {
+      font-family: var(--heading);
+      font-weight: 600;
+      font-size: clamp(50px, 8vw, 120px);
+      line-height: .95;
+      letter-spacing: -.06em;
+      color: var(--black);
+    }
+    .contact-links {
+      margin-top: 70px;
+      display: flex;
+      gap: 50px;
+      font-family: var(--sans);
+      font-weight: 500;
+      flex-wrap: wrap;
+    }
+    .contact-links a {
+      border-bottom: 2px solid var(--black);
+      padding-bottom: 10px;
+      transition: .2s;
+      font-size: 14px;
+    }
+    .contact-links a:hover {
+      color: var(--red);
+      border-bottom-color: var(--red);
+    }
+    .contact-links .email-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .contact-links .email-link .email-addr {
+      font-weight: 400;
+      color: #3e3d39;
+      font-size: 14px;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    /* ===== Responsive ===== */
+    @media(max-width:900px) {
+      .hero .container {
+        padding-left: 24px;
+        max-width: 85%;
+      }
+      .hero-image {
+        width: 220px;
+        height: 300px;
+        right: 4%;
+        bottom: 15%;
+        opacity: .7;
+      }
+      .about {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .about-left h2 {
+        font-size: 40px;
+      }
+      .about-image {
+        max-width: 100%;
+      }
+      .project-main,
+      .sense-grid {
+        grid-template-columns: 1fr;
+      }
+      .project {
+        grid-template-columns: 1fr;
+        padding: 80px 0;
+        gap: 30px;
+      }
+      .works-header h2,
+      .preview-title {
+        font-size: 50px;
+      }
+      .project-info h3 {
+        font-size: 32px;
+      }
+      .nav {
+        padding: 16px 24px;
+      }
+      .nav-menu {
+        gap: 20px;
+        font-size: 12px;
+      }
+      .nav-logo {
+        font-size: 15px;
+      }
+      .project-image {
+        min-height: 340px;
+      }
+      .project-image.video-container {
+        min-height: 340px;
+      }
+      .stack-carousel {
+        min-height: 340px;
+      }
+      .stack-card {
+        width: 92%;
+      }
+      .stack-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+      }
+      .info-card {
+        padding: 18px 20px;
+      }
+      .sense-images {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .sense-quote {
+        font-size: 17px;
+        padding-left: 18px;
+      }
+      .contact-links {
+        gap: 30px;
+      }
+    }
+    @media(max-width:600px) {
+      .project {
+        padding: 60px 0;
+      }
+      .project-image {
+        min-height: 280px;
+      }
+      .project-image.video-container {
+        min-height: 280px;
+      }
+      .stack-carousel {
+        min-height: 280px;
+      }
+      .stack-card {
+        width: 94%;
+      }
+      .stack-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+      }
+      .about-left h2 {
+        font-size: 32px;
+      }
+      .sense-images {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .sense-quote {
+        font-size: 15px;
+        padding-left: 14px;
+      }
+      .contact-links {
+        gap: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-logo">刘畅</div>
+    <div class="nav-menu">
+      <a href="#works">WORKS</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+      <a class="nav-btn">RESUME</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-meta">VISUAL COMMUNICATION DESIGN / 2027</div>
+        <h1 class="hero-title">
+          <span>MY</span>
+          <span class="accent">DESIGN</span>
+        </h1>
+        <p class="hero-desc">通过品牌、包装、海报与视觉系统，探索设计如何连接人与情绪。</p>
+      </div>
+      <div class="hero-image">
+        <img src="https://raw.githubusercontent.com/changliu170-lang/-/main/%E7%85%A7%E7%89%87.jpg" alt="cover" />
+      </div>
+      <div class="scroll">SCROLL ↓</div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container about reveal">
+        <div class="about-left">
+          <div class="label">ABOUT ME</div>
+          <h2>设计是一种<br>观察方式</h2>
+          <div class="about-image">
+            <img src="https://raw.githubusercontent.com/changliu170-lang/-/main/ChatGPT%20Image%202026%E5%B9%B48%E6%9C%881%E6%97%A5%2011_10_50.png" alt="about image" />
+          </div>
+        </div>
+        <div class="about-right">
+          <p>视觉传达设计专业学生，关注品牌视觉、包装设计和情绪化表达。喜欢从生活细节中寻找视觉语言，并通过设计解决真实问题。</p>
+          <div class="info-card">
+            <div class="info-item">
+              <span class="info-label">学校</span>
+              <span class="info-value">本科 · 无锡太湖学院</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">专业</span>
+              <span class="info-value">视觉传达设计</span>
+            </div>
+          </div>
+          <div class="skills">
+            <span class="tag">Photoshop</span>
+            <span class="tag">Illustrator</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Blender</span>
+            <span class="tag">After Effects</span>
+            <span class="tag">Brand Design</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Works -->
+    <section id="works">
+      <div class="container">
+        <div class="works-header reveal">
+          <h2>SELECTED<br>WORKS</h2>
+          <div class="work-count">04 PROJECTS</div>
+        </div>
+
+        <!-- 项目01 — 山房 -->
+        <div class="project reveal">
+          <div class="project-number">01</div>
+          <div class="project-main">
+            <div class="project-image">
+              <div class="stack-carousel" id="shanfangStack">
+                <div class="stack-card active" data-index="0">
+                  <img src="https://raw.githubusercontent.com/changliu170-lang/-/main/%E6%9C%AA%E6%A0%87%E9%A2%98-1.png" alt="山房-主视觉" />
+                </div>
+                <div class="stack-card bottom" data-index="1">
+                  <img src="https://raw.githubusercontent.com/changliu170-lang/-/main/ChatGPT%20Image%202026%E5%B9%B47%E6%9C%8810%E6%97%A5%2017_58_44.png" alt="山房1" />
+                </div>
+                <div class="stack-card deep" data-index="2">
+                  <img src="https://raw.githubusercontent.com/changliu170-lang/-/main/ChatGPT%20Image%202026%E5%B9%B47%E6%9C%8830%E6%97%A5%2016_59_19.png" alt="山房2" />
+                </div>
+                <button class="stack-btn prev" data-stack="shanfangStack">‹</button>
+                <button class="stack-btn next" data-stack="shanfangStack">›</button>
+                <div class="stack-indicators" data-stack="shanfangStack">
+                  <span class="active" data-index="0"></span>
+                  <span data-index="1"></span>
+                  <span data-index="2"></span>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>山房</h3>
+              <p>传统东方气质与现代包装语言结合，完成品牌视觉系统与包装设计。</p>
+              <div class="project-tags"><span>Brand Identity</span><span>Packaging</span></div>
+              <div class="project-detail">
+                <dl>
+                  <dt>背景</dt><dd>探索东方生活方式品牌年轻化表达</dd>
+                  <dt>过程</dt><dd>品牌定位 → 包装结构 → 视觉延展</dd>
+                  <dt>成果</dt><dd>完整包装系统设计</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 项目02 — MOLLY -->
+        <div class="project reveal">
+          <div class="project-number">02</div>
+          <div class="project-main">
+            <div class="project-image">
+              <div class="stack-carousel" id="mollyStack">
+                <div class="stack-card active" data-index="0">
+                  <img src="https://raw.githubusercontent.com/changliu170-lang/-/main/ChatGPT%20Image%202026%E5%B9%B47%E6%9C%8830%E6%97%A5%2017_04_26.png" alt="MOLLY 成长" />
+                </div>
+                <div class="stack-card middle" data-index="1">
+                  <img src="https://raw.githubusercontent.com/changliu170-lang/-/main/ChatGPT%20Image%202026%E5%B9%B47%E6%9C%8830%E6%97%A5%2017_04_32.png" alt="MOLLY 治愈" />
+                </div>
+                <div class="stack-card bottom" data-index="2">
+                  <img src="https://raw.githubusercontent.com/changliu170-lang/-/main/ChatGPT%20Image%202026%E5%B9%B47%E6%9C%8830%E6%97%A5%2017_05_47.png" alt="MOLLY 嘴替" />
+                </div>
+                <button class="stack-btn prev" data-stack="mollyStack">‹</button>
+                <button class="stack-btn next" data-stack="mollyStack">›</button>
+                <div class="stack-indicators" data-stack="mollyStack">
+                  <span class="active" data-index="0"></span>
+                  <span data-index="1"></span>
+                  <span data-index="2"></span>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>MOLLY</h3>
+              <p>围绕年轻人的情绪表达，打造具有共鸣感的IP视觉设计。三张系列海报交替展示，传递不同情绪主题。</p>
+              <div class="project-tags"><span>IP Design</span><span>Poster</span><span>Emotion</span></div>
+              <div class="project-detail">
+                <dl>
+                  <dt>背景</dt><dd>探索年轻人情绪表达的视觉语言</dd>
+                  <dt>过程</dt><dd>概念策划 → 文案创作 → 视觉设计 → 系列延展</dd>
+                  <dt>成果</dt><dd>三张情绪系列海报</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 项目03 — 汉堡节 -->
+        <div class="project reveal">
+          <div class="project-number">03</div>
+          <div class="project-main">
+            <div class="project-image">
+              <div class="stack-carousel" id="burgerStack">
+                <div class="stack-card active" data-index="0">
+                  <img src="https://raw.githubusercontent.com/changliu170-lang/-/main/%E6%B1%89%E5%A0%A11.png" alt="汉堡节1" />
+                </div>
+                <div class="stack-card bottom" data-index="1">
+                  <img src="https://raw.githubusercontent.com/changliu170-lang/-/main/%E6%B1%89%E5%A0%A12.png" alt="汉堡节2" />
+                </div>
+                <button class="stack-btn prev" data-stack="burgerStack">‹</button>
+                <button class="stack-btn next" data-stack="burgerStack">›</button>
+                <div class="stack-indicators" data-stack="burgerStack">
+                  <span class="active" data-index="0"></span>
+                  <span data-index="1"></span>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>汉堡节</h3>
+              <p>围绕年轻消费群体，建立具有节日氛围的品牌视觉体验。</p>
+              <div class="project-tags"><span>Event Identity</span><span>Visual System</span></div>
+              <div class="project-detail">
+                <dl>
+                  <dt>背景</dt><dd>打造校园商业活动视觉传播方案</dd>
+                  <dt>过程</dt><dd>主题策划 → IP视觉 → 海报延展 → 空间应用</dd>
+                  <dt>成果</dt><dd>活动视觉系统与宣传物料</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================================
+             项目04 — Blender场景 (视频)
+             ============================================================ -->
+        <div class="project reveal">
+          <div class="project-number">04</div>
+          <div class="project-main">
+            <div class="project-image video-container">
+              <video autoplay loop muted playsinline>
+                <source src="https://raw.githubusercontent.com/changliu170-lang/-/main/blender.mp4" type="video/mp4">
+                <img src="images/poster.jpg" alt="Blender 场景" />
+              </video>
+            </div>
+            <div class="project-info">
+              <h3>Blender场景</h3>
+              <p>渲染实体场景，平面想法落地构建</p>
+              <div class="project-tags"><span>Blender</span><span>AE</span></div>
+              <div class="project-detail">
+                <dl>
+                  <dt>背景</dt><dd>探索三维视觉在情绪表达中的可能性</dd>
+                  <dt>过程</dt><dd>概念设计 → 三维建模 → 材质灯光 → 动态渲染</dd>
+                  <dt>成果</dt><dd>三维情绪视觉系列</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Horizontal Preview -->
+    <section class="preview">
+      <div class="container">
+        <div class="label">PROJECT PREVIEW</div>
+        <h2 class="preview-title">SELECTED</h2>
+        <div class="slider">
+          <div class="card"><div class="card-image"><img src="https://raw.githubusercontent.com/changliu170-lang/-/main/%E6%9C%AA%E6%A0%87%E9%A2%98-1.png" alt="山房" /></div><div class="card-title">山房包装<span>01</span></div></div>
+          <div class="card"><div class="card-image"><img src="https://raw.githubusercontent.com/changliu170-lang/-/main/ChatGPT%20Image%202026%E5%B9%B47%E6%9C%8830%E6%97%A5%2017_04_26.png" alt="MOLLY" /></div><div class="card-title">MOLLY<span>02</span></div></div>
+          <div class="card"><div class="card-image"><img src="https://raw.githubusercontent.com/changliu170-lang/-/main/%E6%B1%89%E5%A0%A11.png" alt="汉堡节" /></div><div class="card-title">汉堡节<span>03</span></div></div>
+          <div class="card"><div class="card-image">
+            <video autoplay loop muted playsinline style="height:100%;width:100%;object-fit:cover;">
+              <source src="https://raw.githubusercontent.com/changliu170-lang/-/main/blender.mp4" type="video/mp4">
+              <img src="images/poster.jpg" alt="Blender场景" />
+            </video>
+          </div><div class="card-title">Blender场景<span>04</span></div></div>
+          <!-- 复制 -->
+          <div class="card"><div class="card-image"><img src="https://raw.githubusercontent.com/changliu170-lang/-/main/%E6%9C%AA%E6%A0%87%E9%A2%98-1.png" alt="山房" /></div><div class="card-title">山房包装<span>01</span></div></div>
+          <div class="card"><div class="card-image"><img src="https://raw.githubusercontent.com/changliu170-lang/-/main/ChatGPT%20Image%202026%E5%B9%B47%E6%9C%8830%E6%97%A5%2017_04_26.png" alt="MOLLY" /></div><div class="card-title">MOLLY<span>02</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sense (设计之前先观察世界) -->
+    <section class="sense">
+      <div class="container sense-grid reveal">
+        <div>
+          <div class="label">DESIGN THINKING</div>
+          <h2>设计之前<br>先观察世界</h2>
+          <!-- 新增格言 -->
+          <div class="sense-quote">
+            <span>设计始于观看，而非创造。</span>
+            <span>街道是最好的灵感库。</span>
+            <span class="highlight">每一个日常细节，都藏着未被翻译的视觉语言。</span>
+          </div>
+        </div>
+        <div>
+          <p>我习惯记录生活中的视觉细节：包装结构、街边招牌、字体组合以及人与环境之间的关系。这些观察最终转化为设计语言。</p>
+          <div class="sense-images">
+            <!-- 第一个容器：视频 -->
+            <div class="sense-box">
+              <video autoplay loop muted playsinline>
+                <source src="https://raw.githubusercontent.com/changliu170-lang/-/main/%E9%A3%9E%E8%88%B9%E8%BF%90%E8%A1%8C%E8%BD%A8%E8%BF%B9%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90%E6%8C%87%E4%BB%A4.mp4" type="video/mp4">
+                <img src="https://raw.githubusercontent.com/changliu170-lang/-/main/ChatGPT%20Image%202026%E5%B9%B47%E6%9C%8830%E6%97%A5%2017_04_26.png" alt="飞船轨迹" />
+              </video>
+            </div>
+            <!-- 第二个容器：飞船运行轨迹视频生成指令 (1).png -->
+            <div class="sense-box">
+              <img src="https://raw.githubusercontent.com/changliu170-lang/-/main/%E9%A3%9E%E8%88%B9%E8%BF%90%E8%A1%8C%E8%BD%A8%E8%BF%B9%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90%E6%8C%87%E4%BB%A4%20(1).png" alt="观察02" />
+            </div>
+            <!-- 第三个容器：飞船运行轨迹视频生成指令 (2).png -->
+            <div class="sense-box">
+              <img src="https://raw.githubusercontent.com/changliu170-lang/-/main/%E9%A3%9E%E8%88%B9%E8%BF%90%E8%A1%8C%E8%BD%A8%E8%BF%B9%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90%E6%8C%87%E4%BB%A4%20(2).png" alt="观察03" />
+            </div>
+            <!-- 第四个容器：Gemini_Generated_Image_w0fbd9w0fbd9w0fb.png -->
+            <div class="sense-box">
+              <img src="https://raw.githubusercontent.com/changliu170-lang/-/main/Gemini_Generated_Image_w0fbd9w0fbd9w0fb.png" alt="观察04" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <footer id="contact" class="contact">
+      <div class="container">
+        <div class="label">CONTACT</div>
+        <h2>LET'S CREATE<br>SOMETHING<br>MEANINGFUL.</h2>
+        <div class="contact-links">
+          <a href="#">xiaohongshu</a>
+          <a href="#" class="email-link">
+            <span>email</span>
+            <span class="email-addr">410667757@qq.com</span>
+          </a>
+          <a href="#">resume PDF</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // ============================================================
+    // Scroll Reveal
+    // ============================================================
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(item => {
+        if (item.isIntersecting) {
+          item.target.classList.add("active");
+        }
+      });
+    }, { threshold: .15 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    // ============================================================
+    // Hero 滚动视差
+    // ============================================================
+    const heroTitle = document.querySelector(".hero-title");
+    const heroImage = document.querySelector(".hero-image");
+    window.addEventListener("scroll", () => {
+      let y = window.scrollY;
+      if (heroTitle) heroTitle.style.transform = `translateY(${y * 0.18}px) scale(${1 + y / 5000})`;
+      if (heroImage) heroImage.style.transform = `translateY(${y * -.08}px)`;
+    });
+
+    // ============================================================
+    // Hero 鼠标视差
+    // ============================================================
+    document.addEventListener("mousemove", (e) => {
+      const x = (e.clientX / window.innerWidth - .5) * 20;
+      const y = (e.clientY / window.innerHeight - .5) * 20;
+      if (heroImage) heroImage.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    // ============================================================
+    // 通用卡片堆叠轮播 (项目一、二、三)
+    // ============================================================
+    function initStackCarousel(containerId, intervalMs = 2500) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const cards = container.querySelectorAll('.stack-card');
+      const dots = container.querySelectorAll('.stack-indicators span');
+      const prevBtn = container.querySelector('.stack-btn.prev');
+      const nextBtn = container.querySelector('.stack-btn.next');
+      const total = cards.length;
+      if (total === 0) return;
+
+      let current = 0;
+      let autoInterval = null;
+
+      function getLayerClass(index) {
+        const diff = (index - current + total) % total;
+        if (diff === 0) return 'active';
+        if (diff === 1) return 'middle';
+        if (diff === 2) return 'bottom';
+        return 'deep';
+      }
+
+      function goTo(index) {
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+        current = index;
+
+        cards.forEach((card, i) => {
+          card.classList.remove('active', 'middle', 'bottom', 'deep');
+          const layer = getLayerClass(i);
+          card.classList.add(layer);
+        });
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === current);
+        });
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+
+      function startAuto() {
+        if (autoInterval) clearInterval(autoInterval);
+        autoInterval = setInterval(next, intervalMs);
+      }
+
+      function stopAuto() {
+        if (autoInterval) {
+          clearInterval(autoInterval);
+          autoInterval = null;
+        }
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          stopAuto();
+          next();
+          startAuto();
+        });
+      }
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          stopAuto();
+          prev();
+          startAuto();
+        });
+      }
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index, 10);
+          if (index === current) return;
+          stopAuto();
+          goTo(index);
+          startAuto();
+        });
+      });
+
+      container.addEventListener('mouseenter', stopAuto);
+      container.addEventListener('mouseleave', startAuto);
+
+      goTo(0);
+      startAuto();
+
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+          stopAuto();
+        } else {
+          startAuto();
+        }
+      });
+
+      return { goTo, next, prev, startAuto, stopAuto };
+    }
+
+    initStackCarousel('shanfangStack', 2500);
+    initStackCarousel('mollyStack', 2500);
+    initStackCarousel('burgerStack', 1500);
+  </script>
+</body>
+</html>
